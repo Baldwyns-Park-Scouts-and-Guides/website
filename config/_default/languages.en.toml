@@ -13,9 +13,9 @@ title = "Lowkey Blowfish"
   dateFormat = "2 January 2006"
 
 [params.author]
-  name = "Blue Blowfish"
-  image = "img/avatar.png"
-  headline = "This is my very simple profile website with my links"
+  name = "Baldwyns Park Scouts & Guides"
+  image = "img/building.png"
+  headline = "Home of the Baldwyns Park Scouts & Guides"
   bio = "A little bit about you"
    links = [
      { link = "https://nunocoracao.github.io/blowfish/" },
