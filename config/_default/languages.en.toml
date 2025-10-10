@@ -1,24 +1,24 @@
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "Lowkey Blowfish"
+title = "Baldwyns Park Scouts & Guides"
 
 [params]
   displayName = "EN"
   isoCode = "en"
   rtl = false
   # logo = "img/logo.png"
-  description = "My awesome website"
+  description = "Baldwyns Park Scouts & Guides"
   # copyright = "Copy, _right?_ :thinking_face:"
   dateFormat = "2 January 2006"
 
 [params.author]
   name = "Baldwyns Park Scouts & Guides"
-  # image = "img/building.png"
-  headline = "Home of the Baldwyns Park Scouts & Guides"
+  # image = "img/avatar.png"
+  headline = "The Home of Scouting & Guiding in Joydens Wood"
   # bio = "A little bit about you"
-   # links = [
-    # { link = "https://nunocoracao.github.io/blowfish/" },
-    # { github = "https://github.com/nunocoracao/blowfish" },
-    # { x-twitter = "https://twitter.com/burufugu" }
-   # ]
+  #  links = [
+  #   { link = "https://baldwyns-park-scouts-and-guides.github.io/blowfish/" },
+  #   { github = "https://github.com/Baldwyns-Park-Scouts-and-Guides/blowfish" },
+  #   { location = "https://twitter.com/burufugu" }
+  #  ]

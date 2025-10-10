@@ -10,41 +10,55 @@
 # overridden by providing a weight value. The menu will then be
 # ordered by weight from lowest to highest.
 
-[[main]]
-  name = "Blog"
-  pageRef = "posts"
-  weight = 10
+# [[main]]
+#   name = "Blog"
+#   pageRef = "posts"
+#   weight = 10
 
-[[main]]
-  name = "Tags"
-  pageRef = "tags"
-  weight = 20
+# [[main]]
+#   name = "Tags"
+#   pageRef = "tags"
+#   weight = 20
 
-[[main]]
-  identifier = "web"
-  pre = "link"
-  url = "https://nunocoracao.github.io/blowfish/"
-  weight = 40
+# [[main]]
+#   identifier = "charities commission"
+#   pre = "link"
+#   url = "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/303501/charity-overview"
+#   weight = 40
 
 [[main]]
   identifier = "github"
   pre = "github"
-  url = "https://github.com/nunocoracao/blowfish"
+  url = "https://github.com/Baldwyns-Park-Scouts-and-Guides/blowfish"
   weight = 50
 
-[[main]]
-  identifier = "twitter"
-  pre = "twitter"
-  url = "https://twitter.com/burufugu"
-  weight = 60
+# [[main]]
+#   identifier = "twitter"
+#   pre = "twitter"
+#   url = "https://twitter.com/burufugu"
+#   weight = 60
 
 
 # -- Footer Menu --
 # The footer menu is displayed at the bottom of the page, just before
 # the copyright notice. Configure as per the main menu above.
 
+#  [[footer]]
+#    name = "Tags"
+#    pageRef = "tags"
+#    weight = 10
 
  [[footer]]
-   name = "Tags"
-   pageRef = "tags"
+   name = "Charities Commission"
+   url = "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/303501/charity-overview"
+   weight = 10
+
+ [[footer]]
+   name = "Scouts"
+   url = "https://www.scouts.org.uk/"
+   weight = 10
+
+ [[footer]]
+   name = "Girlguiding"
+   url = "https://www.girlguiding.org.uk/"
    weight = 10
