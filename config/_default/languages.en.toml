@@ -14,11 +14,11 @@ title = "Lowkey Blowfish"
 
 [params.author]
   name = "Baldwyns Park Scouts & Guides"
-  image = "img/building.png"
+  # image = "img/building.png"
   headline = "Home of the Baldwyns Park Scouts & Guides"
-  bio = "A little bit about you"
-   links = [
-     { link = "https://nunocoracao.github.io/blowfish/" },
-     { github = "https://github.com/nunocoracao/blowfish" },
-     { x-twitter = "https://twitter.com/burufugu" }
-   ]
+  # bio = "A little bit about you"
+   # links = [
+    # { link = "https://nunocoracao.github.io/blowfish/" },
+    # { github = "https://github.com/nunocoracao/blowfish" },
+    # { x-twitter = "https://twitter.com/burufugu" }
+   # ]
