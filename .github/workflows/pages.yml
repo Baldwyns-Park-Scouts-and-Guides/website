@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: Blowfish Docs Deploy
+name: Site Deploy
 
 on:
   # Runs on pushes targeting the default branch
@@ -36,7 +36,7 @@ jobs:
       - name: Hugo setup
         uses: peaceiris/actions-hugo@v2.6.0
         with:
-          hugo-version: 0.142.0
+          hugo-version: 0.150.0
           extended: true
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
