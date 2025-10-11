@@ -33,12 +33,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: get url for pages
+      - name: Get Pages URL
+        id: get-gh-url
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh_url=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
           echo Pages url: ${gh_url}
+          echo "gh_url=${gh_url}" >> "$GITHUB_OUTPUT"
+
       - name: Hugo setup
         uses: peaceiris/actions-hugo@v2.6.0
         with:
@@ -63,7 +66,7 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo -d ./public --baseURL $gh_url
+          hugo -d ./public --baseURL ${{ steps.get-gh-url.outputs.gh_url }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
