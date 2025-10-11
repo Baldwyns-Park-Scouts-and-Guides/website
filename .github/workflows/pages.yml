@@ -33,12 +33,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - name: get url for pages
-      #   run: |
-      #     url=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
-      #     sed -i '19i\
-      #           <meta http-equiv="refresh" content="0;URL='"$url"manual/'">
-      #     ' _site/index.html
+      - name: get url for pages
+        run: |
+          url=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
+          echo Pages url: ${url}
       - name: Hugo setup
         uses: peaceiris/actions-hugo@v2.6.0
         with:
