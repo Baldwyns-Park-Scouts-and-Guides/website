@@ -34,6 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get url for pages
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           url=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
           echo Pages url: ${url}
