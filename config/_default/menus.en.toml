@@ -15,21 +15,15 @@
 #   pageRef = "posts"
 #   weight = 10
 
-# [[main]]
-#   name = "Tags"
-#   pageRef = "tags"
-#   weight = 20
-
-# [[main]]
-#   identifier = "charities commission"
-#   pre = "link"
-#   url = "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/303501/charity-overview"
-#   weight = 40
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 10
 
 [[main]]
   identifier = "github"
   pre = "github"
-  url = "https://github.com/Baldwyns-Park-Scouts-and-Guides/blowfish"
+  url = "https://github.com/Baldwyns-Park-Scouts-and-Guides/website"
   weight = 50
 
 # [[main]]
@@ -43,10 +37,10 @@
 # The footer menu is displayed at the bottom of the page, just before
 # the copyright notice. Configure as per the main menu above.
 
-#  [[footer]]
-#    name = "Tags"
-#    pageRef = "tags"
-#    weight = 10
+ [[footer]]
+   name = "Tags"
+   pageRef = "tags"
+   weight = 10
 
  [[footer]]
    name = "Charities Commission"

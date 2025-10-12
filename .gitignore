@@ -104,4 +104,7 @@ dist
 .tern-port
 
 public/
-resources/_gen/
+resources/
+
+# Mac exclusions
+.DS_Store

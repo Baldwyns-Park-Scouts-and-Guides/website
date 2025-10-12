@@ -12,7 +12,7 @@ autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = true
 
-# mainSections = ["posts"]
+mainSections = ["Posts","About", "Blog","Activities","Adventures","Links","Gallery","Resources"]
 # robots = ""
 
 disableImageOptimization = false
@@ -24,14 +24,15 @@ defaultBackgroundImage = "img/building.png" # used as default for background ima
 # defaultFeaturedImage = "IMAGE.jpg" # used as default for featured images in all articles
 # defaultSocialImage = "/android-chrome-512x512.png" # used as default for social media sharing (Open Graph and Twitter)
 
-# highlightCurrentMenuArea = true
-# smartTOC = true
-# smartTOCHideUnfocusedChildren = true
+highlightCurrentMenuArea = true
+smartTOC = true
+smartTOCHideUnfocusedChildren = true
 
 fingerprintAlgorithm = "sha512" # Valid values are "sha512" (default), "sha384", "sha256"
 
 [header]
   layout = "fixed" # valid options: basic, fixed
+  showMenu = true
 
 [footer]
  # showMenu = true
@@ -41,8 +42,9 @@ fingerprintAlgorithm = "sha512" # Valid values are "sha512" (default), "sha384",
   showScrollToTop = true
 
 [homepage]
-  layout = "hero" # valid options: page, profile, hero, card, background, custom
+  layout = "background" # valid options: page, profile, hero, card, background, custom
   homepageImage = "img/building.png" # used in: hero, and card
+  # disableHeroImageFilter = true
   showRecent = false
   showRecentItems = 5
   showMoreLink = false
@@ -65,7 +67,7 @@ fingerprintAlgorithm = "sha512" # Valid values are "sha512" (default), "sha384",
   # editURL = "https://github.com/username/repo/"
   editAppendPath = true
   seriesOpened = false
-  showHeadingAnchors = true
+  showHeadingAnchors = false
   showPagination = true
   invertPagination = false
   showReadingTime = true
@@ -74,7 +76,7 @@ fingerprintAlgorithm = "sha512" # Valid values are "sha512" (default), "sha384",
   showAuthorsBadges = false 
   showWordCount = true
   showSummary = true
-  sharingLinks = [ "linkedin", "twitter", "whatsapp", "pinterest", "reddit", "facebook", "email"]
+  # sharingLinks = [ "linkedin", "twitter", "whatsapp", "pinterest", "reddit", "facebook", "email"]
 
 [list]
   layoutBackgroundHeaderSpace = false
