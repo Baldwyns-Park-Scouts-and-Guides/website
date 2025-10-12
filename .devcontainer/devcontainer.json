@@ -24,10 +24,10 @@
     }
   },
   "forwardPorts": [1313],
-  "postCreateCommand": "hugo version && git config --global --add safe.directory /workspaces/website && bash /workspaces/website/.devcontainer/setup-ssh.sh",
+  "postCreateCommand": "hugo version && git config --global --add safe.directory /workspaces/website",
   "remoteUser": "vscode",
-  "mounts": [
-    "source=/Users/richardw/.ssh,target=/tmp/.ssh-localhost,type=bind,consistency=cached,readonly"
-  ],
+  // "mounts": [
+  //   "source=../../../.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
+  // ],
   "postStartCommand": "npm run dev"
 }
