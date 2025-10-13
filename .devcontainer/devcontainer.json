@@ -26,8 +26,8 @@
   "forwardPorts": [1313],
   "postCreateCommand": "hugo version && git config --global --add safe.directory /workspaces/website",
   "remoteUser": "vscode",
-  // "mounts": [
-  //   "source=../../../.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
-  // ],
+  "mounts": [
+    "source=../../../.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
+  ],
   "postStartCommand": "npm run dev"
 }
