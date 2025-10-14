@@ -1,0 +1,26 @@
+# Configuration for pre-commit.ci
+# See https://pre-commit.ci for more information
+
+repos:
+  # Update hook versions automatically
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.41.0
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.14.0
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.4.0
+
+# CI-specific configuration
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  skip: [hugo-build-check]  # Skip Hugo build in CI as it requires Hugo binary
+  submodules: false

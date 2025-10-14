@@ -43,12 +43,10 @@ jobs:
           echo "gh_url=${gh_url}" >> "$GITHUB_OUTPUT"
 
       - name: Hugo setup
-        uses: peaceiris/actions-hugo@v2.6.0
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 0.150.0
           extended: true
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
 
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
@@ -58,7 +56,7 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v4
 
       - name: Build with Hugo
         env:
@@ -82,4 +80,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -2,33 +2,29 @@
 # Refer to the theme docs for more details about each of these parameters.
 # https://nunocoracao.github.io/blowfish/docs/getting-started/
 
-theme = "blowfish"
-# baseURL = "https://your_domain.com/"
-defaultContentLanguage = "en"
-
-enableRobotsTXT = true
-summaryLength = 30
-
 buildDrafts = false
 buildFuture = false
-
+# baseURL = "https://your_domain.com/"
+defaultContentLanguage = "en"
 enableEmoji = true
-
-# googleAnalytics = "G-XXXXXXXXX"
-
-[pagination]
-  pagerSize = 100
-
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-  author = "authors"
-  series = "series"
-
-[sitemap]
-  changefreq = 'daily'
-  filename = 'sitemap.xml'
-  priority = 0.5
+enableRobotsTXT = true
+googleAnalytics = "G-04CCH0CFQ5"
+summaryLength = 30
+theme = "blowfish"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON"]
+
+[pagination]
+pagerSize = 100
+
+[sitemap]
+changefreq = 'daily'
+filename = 'sitemap.xml'
+priority = 0.5
+
+[taxonomies]
+author = "authors"
+category = "categories"
+series = "series"
+tag = "tags"
