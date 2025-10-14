@@ -1,0 +1,83 @@
+name: Auto Pull Request
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if PR already exists
+        id: check-pr
+        run: |
+          BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
+          # Check if PR already exists for this branch
+          PR_EXISTS=$(gh pr list --head "$BRANCH_NAME" --state open --json number --jq length)
+          echo "pr_exists=$PR_EXISTS" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        if: steps.check-pr.outputs.pr_exists == '0'
+        run: |
+          BRANCH_NAME="${{ steps.check-pr.outputs.branch_name }}"
+
+          # Get the latest commit message for PR title
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+
+          # Create PR title and body
+          PR_TITLE="Auto PR: $COMMIT_MSG"
+          PR_BODY="🤖 **Automated Pull Request**
+
+          This PR was automatically created from branch \`$BRANCH_NAME\`.
+
+          ## Changes
+          - Latest commit: $COMMIT_MSG
+          - Branch: \`$BRANCH_NAME\`
+          - Triggered by: @${{ github.actor }}
+
+          ## Review Checklist
+          - [ ] Code follows project standards
+          - [ ] Tests pass
+          - [ ] Documentation updated if needed
+          - [ ] Ready for merge
+
+          ---
+          *This PR was created automatically by GitHub Actions*"
+
+          # Create the pull request
+          gh pr create \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY" \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --assignee "${{ github.actor }}" \
+            --label "auto-pr"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on existing PR
+        if: steps.check-pr.outputs.pr_exists != '0'
+        run: |
+          BRANCH_NAME="${{ steps.check-pr.outputs.branch_name }}"
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+
+          # Add comment to existing PR
+          gh pr comment "$BRANCH_NAME" --body "🔄 **New push detected**
+
+          Latest commit: \`$COMMIT_MSG\`
+          Pushed by: @${{ github.actor }}
+          Time: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
