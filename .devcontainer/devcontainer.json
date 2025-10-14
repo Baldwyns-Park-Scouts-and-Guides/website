@@ -7,7 +7,6 @@
       "extended": true
     },
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.11"
     }
@@ -27,7 +26,7 @@
     }
   },
   "forwardPorts": [1313],
-  "postCreateCommand": "hugo version && git config --global --add safe.directory /workspaces/website && pipx install pre-commit && export PATH=$PATH:/home/vscode/.local/bin && pre-commit install && bash .githooks/setup.sh",
+  "postCreateCommand": "hugo version && git config --global --add safe.directory /workspaces/website && pipx install pre-commit && export PATH=$PATH:/home/vscode/.local/bin && (git config --unset core.hooksPath 2>/dev/null || true) && pre-commit install && bash .githooks/setup.sh",
   "remoteUser": "vscode",
   "mounts": [
     "source=../../../.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
