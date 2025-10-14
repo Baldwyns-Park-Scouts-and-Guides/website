@@ -1,24 +1,25 @@
 languageCode = "en"
 languageName = "English"
-weight = 1
 title = "Baldwyns Park Scouts & Guides"
+weight = 1
 
 [params]
-  displayName = "EN"
-  isoCode = "en"
-  rtl = false
-  # logo = "img/logo.png"
-  description = "Baldwyns Park Scouts & Guides"
-  # copyright = "Copy, _right?_ :thinking_face:"
-  dateFormat = "2 January 2006"
+# copyright = "Copy, _right?_ :thinking_face:"
+dateFormat = "2 January 2006"
+# logo = "img/logo.png"
+description = "Baldwyns Park Scouts & Guides"
+displayName = "EN"
+isoCode = "en"
+rtl = false
 
 [params.author]
-  name = "Baldwyns Park Scouts & Guides"
-  # image = "img/avatar.png"
-  headline = "The Home of Scouting & Guiding in Joydens Wood"
-  # bio = "A little bit about you"
-  #  links = [
-  #   { link = "https://baldwynsparkscoutsandguides.org/" },
-  #   { github = "https://github.com/Baldwyns-Park-Scouts-and-Guides/website" },
-  #   { location = "https://twitter.com/burufugu" }
-  #  ]
+# image = "img/avatar.png"
+headline = "The Home of Scouting & Guiding in Joydens Wood"
+name = "Baldwyns Park Scouts & Guides"
+
+# bio = "A little bit about you"
+# links = [
+# { link = "https://baldwynsparkscoutsandguides.org/" },
+# { github = "https://github.com/Baldwyns-Park-Scouts-and-Guides/website" },
+# { location = "https://twitter.com/burufugu" }
+# ]

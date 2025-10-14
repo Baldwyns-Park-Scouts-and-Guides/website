@@ -1,0 +1,48 @@
+repos:
+  # General file formatting and linting
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=1500']
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.41.0
+    hooks:
+      - id: markdownlint
+        args: ['--fix']
+        exclude: 'themes/.*'
+
+  # TOML formatting
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.14.0
+    hooks:
+      - id: pretty-format-toml
+        args: [--autofix]
+
+  # Hugo specific checks
+  - repo: local
+    hooks:
+      - id: hugo-build-check
+        name: Hugo Build Check
+        entry: hugo
+        args: ['--minify', '--buildDrafts=false']
+        language: system
+        pass_filenames: false
+        files: '\.(md|toml|yaml|yml|html|js|css)$'
+
+  # Git commit message formatting
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.4.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]

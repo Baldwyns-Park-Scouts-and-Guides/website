@@ -5,110 +5,91 @@
 # Refer to the theme docs for more details about each of these parameters.
 # https://nunocoracao.github.io/blowfish/docs/configuration/#theme-parameters
 
-colorScheme = "congo"
-defaultAppearance = "light" # valid options: light or dark
 autoSwitchAppearance = true
-
-enableSearch = true
-enableCodeCopy = true
-
-mainSections = ["Posts","About", "Blog","Activities","Adventures","Links","Gallery","Resources"]
-# robots = ""
-
+colorScheme = "congo"
+defaultAppearance = "light"  # valid options: light or dark
+defaultBackgroundImage = "img/Building-2025.png"  # used as default for background images
 disableImageOptimization = false
 disableImageOptimizationMD = false
 disableTextInHeader = false
-# backgroundImageWidth = 1200
-
-defaultBackgroundImage = "img/building.png" # used as default for background images 
-# defaultFeaturedImage = "IMAGE.jpg" # used as default for featured images in all articles
-# defaultSocialImage = "/android-chrome-512x512.png" # used as default for social media sharing (Open Graph and Twitter)
-
+enableCodeCopy = true
+enableSearch = true
+fingerprintAlgorithm = "sha512"  # Valid values are "sha512" (default), "sha384", "sha256"
 highlightCurrentMenuArea = true
+mainSections = ["Posts", "About", "Blog", "Activities", "Adventures", "Links", "Gallery", "Resources"]
 smartTOC = true
 smartTOCHideUnfocusedChildren = true
 
-fingerprintAlgorithm = "sha512" # Valid values are "sha512" (default), "sha384", "sha256"
-
-[header]
-  layout = "fixed" # valid options: basic, fixed
-  showMenu = true
-
-[footer]
- # showMenu = true
-  showCopyright = true
-  showThemeAttribution = true
-  showAppearanceSwitcher = true
-  showScrollToTop = true
-
-[homepage]
-  layout = "background" # valid options: page, profile, hero, card, background, custom
-  homepageImage = "img/building.png" # used in: hero, and card
-  # disableHeroImageFilter = true
-  showRecent = false
-  showRecentItems = 5
-  showMoreLink = false
-  showMoreLinkDest = "/posts"
-  cardView = true
-  cardViewScreenWidth = true
-  layoutBackgroundBlur = true # only used when layout equals background
-
 [article]
-  showDate = true
-  #showViews = true
-  #showLikes = true
-  showDateUpdated = true
-  showAuthor = true
-  showHero = true
-  heroStyle = "background" # valid options: basic, big, background
-  showBreadcrumbs = true
-  showDraftLabel = true
-  showEdit = false
-  # editURL = "https://github.com/username/repo/"
-  editAppendPath = true
-  seriesOpened = false
-  showHeadingAnchors = false
-  showPagination = true
-  invertPagination = false
-  showReadingTime = true
-  showTableOfContents = true
-  showTaxonomies = false 
-  showAuthorsBadges = false 
-  showWordCount = true
-  showSummary = true
-  # sharingLinks = [ "linkedin", "twitter", "whatsapp", "pinterest", "reddit", "facebook", "email"]
-
-[list]
-  layoutBackgroundHeaderSpace = false
-  showBreadcrumbs = false
-  showSummary = true
-  showTableOfContents = false
-  showCards = true
-  groupByYear = true
-  cardView = false
-  cardViewScreenWidth = false
-
-[sitemap]
-  excludedKinds = []
-
-[taxonomy]
-  showTermCount = true
-
-[firebase]
-  # apiKey = "XXXXXX"
-  # authDomain = "XXXXXX"
-  # projectId = "XXXXXX"
-  # storageBucket = "XXXXXX"
-  # messagingSenderId = "XXXXXX"
-  # appId = "XXXXXX"
-  # measurementId = "XXXXXX"
+# editURL = "https://github.com/username/repo/"
+editAppendPath = true
+heroStyle = "background"  # valid options: basic, big, background
+invertPagination = false
+seriesOpened = false
+showAuthor = true
+showAuthorsBadges = false
+showBreadcrumbs = true
+showDate = true
+# showViews = true
+# showLikes = true
+showDateUpdated = true
+showDraftLabel = true
+showEdit = false
+showHeadingAnchors = false
+showHero = true
+showPagination = true
+showReadingTime = true
+showSummary = true
+showTableOfContents = true
+showTaxonomies = false
+showWordCount = true
 
 [fathomAnalytics]
-  # site = "ABC12345"
-  # domain = "llama.yoursite.com"
+
+[firebase]
+
+[footer]
+showAppearanceSwitcher = true
+# showMenu = true
+showCopyright = true
+showScrollToTop = true
+showThemeAttribution = true
+
+[header]
+layout = "fixed"  # valid options: basic, fixed
+showMenu = true
+
+[homepage]
+cardView = true
+cardViewScreenWidth = true
+homepageImage = "img/Building-2025.png"  # used in: hero, and card
+layout = "background"  # valid options: page, profile, hero, card, background, custom
+layoutBackgroundBlur = true  # only used when layout equals background
+showMoreLink = false
+showMoreLinkDest = "/posts"
+# disableHeroImageFilter = true
+showRecent = false
+showRecentItems = 5
+
+[list]
+cardView = false
+cardViewScreenWidth = false
+groupByYear = true
+layoutBackgroundHeaderSpace = false
+showBreadcrumbs = false
+showCards = true
+showSummary = true
+showTableOfContents = false
+
+[sitemap]
+excludedKinds = []
+
+[taxonomy]
+showTermCount = true
 
 [verification]
-  # google = ""
-  # bing = ""
-  # pinterest = ""
-  # yandex = ""
+
+# google = ""
+# bing = ""
+# pinterest = ""
+# yandex = ""

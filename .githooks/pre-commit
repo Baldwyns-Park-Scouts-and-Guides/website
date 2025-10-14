@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# Git pre-commit hook that runs pre-commit if available, otherwise runs basic checks
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e "${YELLOW}Running pre-commit checks...${NC}"
+
+# Check if pre-commit is available
+if command -v pre-commit >/dev/null 2>&1; then
+    echo -e "${GREEN}✓ Using pre-commit framework${NC}"
+    exec pre-commit run --hook-stage pre-commit
+else
+    echo -e "${YELLOW}⚠ pre-commit not found, running basic checks${NC}"
+
+    # Basic checks without pre-commit
+
+    # Check for trailing whitespace
+    echo "Checking for trailing whitespace..."
+    if git diff --cached --check; then
+        echo -e "${GREEN}✓ No trailing whitespace found${NC}"
+    else
+        echo -e "${RED}✗ Trailing whitespace found. Please fix before committing.${NC}"
+        exit 1
+    fi
+
+    # Check for large files (>1MB)
+    echo "Checking for large files..."
+    large_files=$(git diff --cached --name-only | xargs -I {} find {} -size +1M 2>/dev/null || true)
+    if [ -n "$large_files" ]; then
+        echo -e "${RED}✗ Large files detected:${NC}"
+        echo "$large_files"
+        echo -e "${RED}Please remove or use Git LFS for files larger than 1MB${NC}"
+        exit 1
+    else
+        echo -e "${GREEN}✓ No large files found${NC}"
+    fi
+
+    # Check YAML/TOML syntax if files are staged
+    staged_yaml=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ya?ml)$' || true)
+    staged_toml=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.toml$' || true)
+
+    if [ -n "$staged_yaml" ]; then
+        echo "Checking YAML syntax..."
+        for file in $staged_yaml; do
+            if command -v python3 >/dev/null 2>&1; then
+                if ! python3 -c "import yaml; yaml.safe_load(open('$file'))" 2>/dev/null; then
+                    echo -e "${RED}✗ Invalid YAML syntax in $file${NC}"
+                    exit 1
+                fi
+            fi
+        done
+        echo -e "${GREEN}✓ YAML syntax OK${NC}"
+    fi
+
+    if [ -n "$staged_toml" ]; then
+        echo "Checking TOML syntax..."
+        for file in $staged_toml; do
+            if command -v python3 >/dev/null 2>&1; then
+                if ! python3 -c "import tomllib; tomllib.load(open('$file', 'rb'))" 2>/dev/null; then
+                    echo -e "${RED}✗ Invalid TOML syntax in $file${NC}"
+                    exit 1
+                fi
+            fi
+        done
+        echo -e "${GREEN}✓ TOML syntax OK${NC}"
+    fi
+
+    # Try to build Hugo if available
+    if command -v hugo >/dev/null 2>&1; then
+        echo "Testing Hugo build..."
+        if hugo --minify --buildDrafts=false >/dev/null 2>&1; then
+            echo -e "${GREEN}✓ Hugo build successful${NC}"
+        else
+            echo -e "${RED}✗ Hugo build failed${NC}"
+            exit 1
+        fi
+    else
+        echo -e "${YELLOW}⚠ Hugo not found, skipping build check${NC}"
+    fi
+
+    echo -e "${GREEN}✓ All basic checks passed${NC}"
+fi

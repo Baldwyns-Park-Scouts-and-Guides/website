@@ -1,58 +1,42 @@
 # -- Main Menu --
 # The main menu is displayed in the header at the top of the page.
 # Acceptable parameters are name, pageRef, page, url, title, weight.
-# 
+#
 # The simplest menu configuration is to provide:
-#   name = The name to be displayed for this menu link
-#   pageRef = The identifier of the page or section to link to
+# name = The name to be displayed for this menu link
+# pageRef = The identifier of the page or section to link to
 #
 # By default the menu is ordered alphabetically. This can be
 # overridden by providing a weight value. The menu will then be
 # ordered by weight from lowest to highest.
 
-# [[main]]
-#   name = "Blog"
-#   pageRef = "posts"
-#   weight = 10
+[[footer]]
+name = "Tags"
+pageRef = "tags"
+weight = 10
+
+[[footer]]
+name = "Charities Commission"
+url = "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/303501/charity-overview"
+weight = 10
+
+[[footer]]
+name = "Scouts"
+url = "https://www.scouts.org.uk/"
+weight = 10
+
+[[footer]]
+name = "Girlguiding"
+url = "https://www.girlguiding.org.uk/"
+weight = 10
 
 [[main]]
-  name = "About"
-  pageRef = "about"
-  weight = 10
+name = "About"
+pageRef = "about"
+weight = 10
 
 [[main]]
-  identifier = "github"
-  pre = "github"
-  url = "https://github.com/Baldwyns-Park-Scouts-and-Guides/website"
-  weight = 50
-
-# [[main]]
-#   identifier = "twitter"
-#   pre = "twitter"
-#   url = "https://twitter.com/burufugu"
-#   weight = 60
-
-
-# -- Footer Menu --
-# The footer menu is displayed at the bottom of the page, just before
-# the copyright notice. Configure as per the main menu above.
-
- [[footer]]
-   name = "Tags"
-   pageRef = "tags"
-   weight = 10
-
- [[footer]]
-   name = "Charities Commission"
-   url = "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/303501/charity-overview"
-   weight = 10
-
- [[footer]]
-   name = "Scouts"
-   url = "https://www.scouts.org.uk/"
-   weight = 10
-
- [[footer]]
-   name = "Girlguiding"
-   url = "https://www.girlguiding.org.uk/"
-   weight = 10
+identifier = "github"
+pre = "github"
+url = "https://github.com/Baldwyns-Park-Scouts-and-Guides/website"
+weight = 50
