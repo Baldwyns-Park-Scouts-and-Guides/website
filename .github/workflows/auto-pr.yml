@@ -28,6 +28,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Ensure labels exist
+        if: steps.check-pr.outputs.pr_exists == '0'
+        run: |
+          # Check if auto-pr label exists, create if it doesn't
+          if ! gh label list --json name --jq '.[].name' | grep -q "^auto-pr$"; then
+            echo "Creating auto-pr label..."
+            gh label create "auto-pr" \
+              --description "Automatically created pull request" \
+              --color "0366d6"
+          else
+            echo "auto-pr label already exists"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Pull Request
         if: steps.check-pr.outputs.pr_exists == '0'
         run: |

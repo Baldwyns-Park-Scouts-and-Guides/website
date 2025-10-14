@@ -122,11 +122,49 @@ draft: false
 Your content here...
 ```
 
-## 🚀 Deployment
+## 🚀 Deployment & Automation
 
-### Automatic Deployment
+### GitHub Workflows
 
-The site automatically deploys when changes are pushed to the `main` branch.
+This project includes several automated workflows for streamlined development and deployment:
+
+#### 1. **Site Deploy** (`pages.yml`)
+
+- **Trigger:** Push to `main` branch or manual dispatch
+- **Purpose:** Builds and deploys the Hugo site to GitHub Pages
+- **Features:**
+  - Uses Hugo v0.150.0 extended
+  - Automatic baseURL configuration
+  - Deploys to `https://baldwynsparkscoutsandguides.org/`
+  - Concurrent deployment protection
+
+#### 2. **Auto Pull Request** (`auto-pr.yml`)
+
+- **Trigger:** Push to any branch except `main`/`master`
+- **Purpose:** Automatically creates pull requests for feature branches
+- **Features:**
+  - Creates PR with commit message as title
+  - Adds review checklist and branch information
+  - Assigns PR to the person who pushed
+  - Adds `auto-pr` label (creates label if missing)
+  - Updates existing PRs with new push notifications
+
+#### 3. **Labeler** (`label.yml`)
+
+- **Trigger:** Pull request creation/updates
+- **Purpose:** Automatically applies labels based on changed files
+- **Features:**
+  - Uses `.github/labeler.yml` configuration
+  - Helps categorize PRs by affected areas
+
+#### 4. **Stale Issues & PRs** (`stale.yml`)
+
+- **Trigger:** Daily at 10:19 UTC
+- **Purpose:** Manages inactive issues and pull requests
+- **Features:**
+  - Marks stale issues with `no-issue-activity` label
+  - Marks stale PRs with `no-pr-activity` label
+  - Helps maintain repository hygiene
 
 ### Manual Build
 
