@@ -9,6 +9,11 @@ on:
 jobs:
   create-pull-request:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read          # Required to checkout code and read repository
+      pull-requests: write    # Required to create and comment on PRs
+      issues: write          # Required to create labels and manage repository labels
+      metadata: read         # Required to read repository metadata
 
     steps:
       - name: Checkout code
