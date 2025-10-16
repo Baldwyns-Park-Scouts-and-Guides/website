@@ -11,31 +11,21 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "devcontainers"
-    directory: "/javascript"
+    directory: "/.devcontainer"
     schedule:
       interval: "daily"
 
   - package-ecosystem: "docker"
-    directory: "/ruby"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "docker-compose"
-    directory: "/ruby"
+    directory: "/.devcontainer"
     schedule:
       interval: "daily"
 
   - package-ecosystem: "gitsubmodule"
-    directory: "/ruby"
+    directory: "/"
     schedule:
       interval: "daily"
 
   - package-ecosystem: "gomod"
-    directory: "/ruby"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: pip
-    directory: "/ruby"
+    directory: "/themes/blowfish"
     schedule:
       interval: "daily"
