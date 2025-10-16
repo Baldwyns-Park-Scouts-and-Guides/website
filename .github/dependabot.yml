@@ -5,37 +5,32 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
 
-  - package-ecosystem: devcontainers
+  - package-ecosystem: "devcontainers"
     directory: "/javascript"
     schedule:
       interval: "daily"
 
-  - package-ecosystem: docker
+  - package-ecosystem: "docker"
     directory: "/ruby"
     schedule:
       interval: "daily"
 
-  - package-ecosystem: docker-compose
+  - package-ecosystem: "docker-compose"
     directory: "/ruby"
     schedule:
       interval: "daily"
 
-  - package-ecosystem: gitsubmodule
+  - package-ecosystem: "gitsubmodule"
     directory: "/ruby"
     schedule:
       interval: "daily"
 
-  - package-ecosystem: gomod
+  - package-ecosystem: "gomod"
     directory: "/ruby"
     schedule:
       interval: "daily"
