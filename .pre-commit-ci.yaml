@@ -22,5 +22,5 @@ ci:
   autoupdate_branch: ''
   autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
   autoupdate_schedule: weekly
-  skip: [hugo-build-check]  # Skip Hugo build in CI as it requires Hugo binary
+  skip: [hugo-build-check,oxipng]  # Skip Hugo build in CI as it requires Hugo binary
   submodules: false
