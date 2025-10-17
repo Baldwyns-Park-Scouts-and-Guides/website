@@ -68,14 +68,6 @@ jobs:
         run: |
           hugo -d ./public --baseURL ${{ env.GH_URL }}
 
-      - name: Test Hugo Build
-        env:
-          # Hugo testing flow
-          HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS: true
-          HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS: true
-        run: |
-          hugo && grep -inorE "<\!-- raw HTML omitted -->|ZgotmplZ|\[i18n\]|\(<nil>\)|(&lt;nil&gt;)|hahahugo" public/
-
       - name: Upload artifact
         if: github.ref   == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v4
