@@ -7,15 +7,16 @@
       "extended": true
     },
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    }
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/dhoeric/features/act:1": {},
+    "ghcr.io/devcontainers-extra/features/pre-commit:2": {}
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "github.vscode-github-actions",
         "bungcip.better-toml",
+        "sanjulaganepola.github-local-actions",
         "davidanson.vscode-markdownlint",
         "yzhang.markdown-all-in-one",
         "gohugoio.hugo"
@@ -26,7 +27,7 @@
     }
   },
   "forwardPorts": [1313],
-  "postCreateCommand": "hugo version && git config --global --add safe.directory /workspaces/website && pipx install pre-commit && export PATH=$PATH:/home/vscode/.local/bin && (git config --unset core.hooksPath 2>/dev/null || true) && pre-commit install && bash .githooks/setup.sh",
+  "postCreateCommand": "hugo version && git config --global --add safe.directory /workspaces/website && (git config --unset core.hooksPath 2>/dev/null || true) && pre-commit install && bash .githooks/setup.sh",
   "remoteUser": "vscode",
   "mounts": [
     "source=../../../.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
