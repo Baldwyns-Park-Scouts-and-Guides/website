@@ -25,9 +25,6 @@ defaults:
   run:
     shell: bash
 
-env:
-  URL: https://baldwynsparkscoutsandguides.org/
-
 jobs:
   # Build job
   build:
@@ -65,6 +62,14 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo -d ./public --baseURL ${{ steps.get-gh-url.outputs.gh_url }}
+
+      - name: Test Hugo Build
+        env:
+          # Hugo testing flow
+          HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS: true
+          HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS: true
+        run: |
+          hugo && grep -inorE "<\!-- raw HTML omitted -->|ZgotmplZ|\[i18n\]|\(<nil>\)|(&lt;nil&gt;)|hahahugo" public/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
