@@ -1,13 +1,13 @@
 languageCode = "en"
 languageName = "English"
-title = "Baldwyns Park Scouts & Guides"
+title = "Baldwyns Park Scouts & Guides, Joydens Wood"
 weight = 1
 
 [params]
 # copyright = "Copy, _right?_ :thinking_face:"
 dateFormat = "2 January 2006"
 # logo = "img/logo.png"
-description = "Baldwyns Park Scouts & Guides"
+description = "Baldwyns Park Scouts & Guides, Joydens Wood"
 displayName = "EN"
 isoCode = "en"
 rtl = false
@@ -15,7 +15,7 @@ rtl = false
 [params.author]
 # image = "img/avatar.png"
 headline = "The Home of Scouting & Guiding in Joydens Wood"
-name = "Baldwyns Park Scouts & Guides"
+name = "Baldwyns Park Scouts & Guides, Joydens Wood"
 
 # bio = "A little bit about you"
 # links = [
