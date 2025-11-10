@@ -31,5 +31,4 @@ DA5 2EG
 
 ## Contacts
 
-Phone: [01322 557921](tel:01322557921)
 Email: [everyone@baldwynsparkscoutsandguides.org](mailto:everyone@baldwynsparkscoutsandguides.org)
