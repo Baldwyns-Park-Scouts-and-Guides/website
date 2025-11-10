@@ -1,0 +1,214 @@
+# GitLab CI/CD Pipeline Configuration
+# Equivalent to GitHub Actions workflows
+
+stages:
+  - build
+  - deploy
+
+# Global defaults
+default:
+  image: ubuntu:latest
+
+# Variables
+variables:
+  HUGO_VERSION: "0.150.0"
+  HUGO_ENVIRONMENT: "production"
+  HUGO_ENV: "production"
+
+# Build and deploy Hugo site to GitLab Pages
+pages:
+  stage: build
+  image: golang:1.21-alpine
+  rules:
+    - if: '$CI_COMMIT_BRANCH'  # Run on all branches
+  before_script:
+    - apk add --no-cache curl git
+    # Install Hugo Extended
+    - |
+      cd /tmp
+      curl -L "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" -o hugo.tar.gz
+      tar -xzf hugo.tar.gz
+      mv hugo /usr/local/bin/
+      chmod +x /usr/local/bin/hugo
+      hugo version
+  script:
+    # Get GitLab Pages URL (for main branch) or use project URL
+    - |
+      if [ "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ]; then
+        BASE_URL="${CI_PAGES_URL}"
+      else
+        BASE_URL="${CI_PROJECT_URL}"
+      fi
+      echo "Base URL: ${BASE_URL}"
+    # Build with Hugo
+    - hugo -d ./public --baseURL "${BASE_URL}"
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 day
+  only:
+    - branches
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[skip ci\]/
+
+# Deploy job (only runs on main branch)
+deploy:
+  stage: deploy
+  dependencies:
+    - pages
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  script:
+    - echo "Deploying to GitLab Pages..."
+    - echo "Site will be available at ${CI_PAGES_URL}"
+  artifacts:
+    paths:
+      - public
+  environment:
+    name: production
+    url: $CI_PAGES_URL
+
+# # Auto Merge Request Creation
+# # This job creates an MR automatically when pushing to non-default branches
+# auto-merge-request:
+#   stage: build
+#   image: alpine:latest
+#   rules:
+#     - if: '$CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
+#   before_script:
+#     - apk add --no-cache curl jq
+#   script:
+#     - |
+#       # Check if MR already exists for this branch
+#       MR_EXISTS=$(curl --silent --header "PRIVATE-TOKEN: ${CI_JOB_TOKEN}" \
+#         "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/merge_requests?source_branch=${CI_COMMIT_BRANCH}&state=opened" | jq length)
+
+#       if [ "$MR_EXISTS" -eq "0" ]; then
+#         echo "Creating new Merge Request..."
+
+#         # Get commit message for MR title
+#         COMMIT_MSG="${CI_COMMIT_TITLE}"
+
+#         # Create MR body
+#         MR_BODY="🤖 **Automated Merge Request**
+
+# This MR was automatically created from branch \`${CI_COMMIT_BRANCH}\`.
+
+# ## Changes
+# - Latest commit: ${COMMIT_MSG}
+# - Branch: \`${CI_COMMIT_BRANCH}\`
+# - Triggered by: @${GITLAB_USER_LOGIN}
+
+# ## Review Checklist
+# - [ ] Code follows project standards
+# - [ ] Tests pass
+# - [ ] Documentation updated if needed
+# - [ ] Ready for merge
+
+# ---
+# *This MR was created automatically by GitLab CI*"
+
+#         # Create the merge request using GitLab API
+#         curl --request POST \
+#           --header "PRIVATE-TOKEN: ${CI_JOB_TOKEN}" \
+#           --header "Content-Type: application/json" \
+#           --data "{
+#             \"source_branch\": \"${CI_COMMIT_BRANCH}\",
+#             \"target_branch\": \"${CI_DEFAULT_BRANCH}\",
+#             \"title\": \"Auto MR: ${COMMIT_MSG}\",
+#             \"description\": $(echo "$MR_BODY" | jq -R -s .),
+#             \"labels\": \"auto-mr\",
+#             \"assignee_id\": ${GITLAB_USER_ID}
+#           }" \
+#           "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/merge_requests"
+
+#         echo "Merge Request created successfully"
+#       else
+#         echo "Merge Request already exists for this branch"
+
+#         # Add comment to existing MR
+#         MR_IID=$(curl --silent --header "PRIVATE-TOKEN: ${CI_JOB_TOKEN}" \
+#           "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/merge_requests?source_branch=${CI_COMMIT_BRANCH}&state=opened" | jq '.[0].iid')
+
+#         NOTE_BODY="🔄 **New push detected**
+
+# Latest commit: \`${CI_COMMIT_TITLE}\`
+# Pushed by: @${GITLAB_USER_LOGIN}
+# Time: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+
+#         curl --request POST \
+#           --header "PRIVATE-TOKEN: ${CI_JOB_TOKEN}" \
+#           --header "Content-Type: application/json" \
+#           --data "{\"body\": $(echo "$NOTE_BODY" | jq -R -s .)}" \
+#           "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/merge_requests/${MR_IID}/notes"
+
+#         echo "Comment added to existing Merge Request"
+#       fi
+#   allow_failure: true
+
+# # Image Compression Job
+# # Compresses images when they are changed on non-default branches
+# compress-images:
+#   stage: build
+#   image: node:18-alpine
+#   rules:
+#     - if: '$CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_COMMIT_BRANCH != "master"'
+#       changes:
+#         - "**/*.jpg"
+#         - "**/*.jpeg"
+#         - "**/*.png"
+#         - "**/*.webp"
+#         - "**/*.avif"
+#   before_script:
+#     - apk add --no-cache git curl
+#     - npm install -g @squoosh/cli
+#   script:
+#     - |
+#       echo "Compressing images..."
+
+#       # Find and compress all image files
+#       find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.avif" \) \
+#         -not -path "*/node_modules/*" \
+#         -not -path "*/.git/*" \
+#         -exec squoosh-cli --webp auto {} \;
+
+#       # Check if there are changes
+#       if git diff --quiet; then
+#         echo "No changes detected after compression"
+#       else
+#         echo "Images compressed successfully"
+#         # Note: GitLab doesn't automatically create MRs from jobs
+#         # You would need to push changes back or use GitLab API to create commits
+#         git config user.email "ci@gitlab.com"
+#         git config user.name "GitLab CI"
+#         git add .
+#         git commit -m "Compressed Images [skip ci]"
+#         # Uncomment to push back (requires proper permissions):
+#         # git push https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git HEAD:${CI_COMMIT_BRANCH}
+#       fi
+#   artifacts:
+#     paths:
+#       - "**/*.jpg"
+#       - "**/*.jpeg"
+#       - "**/*.png"
+#       - "**/*.webp"
+#       - "**/*.avif"
+#     expire_in: 1 week
+#   allow_failure: true
+
+# # Note: GitLab doesn't have a direct equivalent to GitHub's stale bot.
+# # You can use GitLab's built-in "Auto-close inactive issues" feature in:
+# # Settings > General > Merge requests
+# #
+# # Or use a scheduled pipeline with a custom script:
+# # stale-issues:
+# #   stage: build
+# #   image: alpine:latest
+# #   rules:
+# #     - if: '$CI_PIPELINE_SOURCE == "schedule"'
+# #   script:
+# #     - echo "Check for stale issues and MRs"
+# #     # Implement custom logic using GitLab API
+# #   only:
+# #     - schedules
