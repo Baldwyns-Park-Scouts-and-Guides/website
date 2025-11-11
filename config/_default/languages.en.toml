@@ -4,8 +4,8 @@ title = "Baldwyns Park Scouts & Guides, Joydens Wood"
 weight = 1
 
 [params]
-# copyright = "Copy, _right?_ :thinking_face:"
-dateFormat = "2 January 2006"
+copyright = "© { year }, 1st Baldwyns Park Scout and Guide Group, charity no: 303501 "
+dateFormat = "2 January 2025"
 # logo = "img/logo.png"
 description = "Baldwyns Park Scouts & Guides, Joydens Wood"
 displayName = "EN"

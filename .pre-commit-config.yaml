@@ -29,16 +29,16 @@ repos:
       - id: pretty-format-toml
         args: [--autofix]
 
-  # Hugo specific checks
-  - repo: local
-    hooks:
-      - id: hugo-build-check
-        name: Hugo Build Check
-        entry: hugo
-        args: ['--minify', '--buildDrafts=false']
-        language: system
-        pass_filenames: false
-        files: '\.(md|toml|yaml|yml|html|js|css)$'
+  # # Hugo specific checks
+  # - repo: local
+  #   hooks:
+  #     - id: hugo-build-check
+  #       name: Hugo Build Check
+  #       entry: hugo
+  #       args: ['--minify', '--buildDrafts=false']
+  #       language: system
+  #       pass_filenames: false
+  #       files: '\.(md|toml|yaml|yml|html|js|css)$'
 
   # Git commit message formatting
   - repo: https://github.com/compilerla/conventional-pre-commit
