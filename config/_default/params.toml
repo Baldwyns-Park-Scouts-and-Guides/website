@@ -53,7 +53,7 @@ showAppearanceSwitcher = true
 # showMenu = true
 showCopyright = true
 showScrollToTop = true
-showThemeAttribution = true
+showThemeAttribution = false
 
 [header]
 layout = "fixed"  # valid options: basic, fixed
