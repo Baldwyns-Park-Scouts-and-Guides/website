@@ -10,9 +10,12 @@ draft: false
 ---
 ## Who we are
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti
-quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia
-deserunt mollitia animi, id est laborum et dolorum fuga.
+The Baldwyns Park Scouts and Guides are a prominent local youth organization dedicated to fostering the development of
+children and young adults within the community. Rooted in the global Scouting and Guiding movements, this group provides
+a safe, supportive, and inclusive environment where members engage in a wide array of activities designed to build
+confidence, leadership skills, and a sense of responsibility. Through adventurous outdoor pursuits, skill-building
+workshops, community service projects, and fun-filled social events, the organization aims to empower its members to be
+resourceful, independent, and active citizens, all while adhering to the core values and promise of the international movements.
 
 ## How to find us
 
