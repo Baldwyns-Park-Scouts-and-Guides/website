@@ -6,7 +6,7 @@ A modern, responsive website built with Hugo and the Blowfish theme for Baldwyns
 
 ### Prerequisites
 
-- [Hugo](https://gohugo.io/installation/) (v0.150.0 or later)
+- [Hugo](https://gohugo.io/installation/) (v0.152.2 or later)
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (for development tools)
 
@@ -133,7 +133,7 @@ This project includes several automated workflows for streamlined development an
 - **Trigger:** Push to `main` branch or manual dispatch
 - **Purpose:** Builds and deploys the Hugo site to GitHub Pages
 - **Features:**
-  - Uses Hugo v0.150.0 extended
+  - Uses Hugo v0.152.2 extended
   - Automatic baseURL configuration
   - Deploys to `https://baldwynsparkscoutsandguides.org/`
   - Concurrent deployment protection
