@@ -22,7 +22,7 @@ workflows found in `.github/workflows/`.
 
 **Configuration:**
 
-- Uses Hugo Extended version 0.150.0
+- Uses Hugo Extended version 0.152.2
 - Builds to `./public` directory
 - Automatically uses GitLab Pages URL for the base URL on default branch
 
@@ -91,7 +91,7 @@ For custom stale handling, you can:
 
 If you need custom configuration, add variables in **Settings > CI/CD > Variables**:
 
-- `HUGO_VERSION` - Override Hugo version (default: 0.150.0)
+- `HUGO_VERSION` - Override Hugo version (default: 0.152.2)
 - `HUGO_ENVIRONMENT` - Hugo environment (default: production)
 
 ### 3. API Permissions for Auto MR
