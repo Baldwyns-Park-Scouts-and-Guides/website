@@ -3,7 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers/features/hugo:1": {
-      "version": "0.150.0",
+      "version": "0.152.2",
       "extended": true
     },
     "ghcr.io/devcontainers/features/git:1": {},
