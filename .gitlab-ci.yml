@@ -11,7 +11,7 @@ default:
 
 # Variables
 variables:
-  HUGO_VERSION: "0.150.0"
+  HUGO_VERSION: "0.152.2"
   HUGO_ENVIRONMENT: "production"
   HUGO_ENV: "production"
 
