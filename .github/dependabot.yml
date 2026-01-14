@@ -7,25 +7,30 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    target-branch: dev
     schedule:
       interval: "daily"
 
   - package-ecosystem: "devcontainers"
     directory: "/.devcontainer"
+    target-branch: dev
     schedule:
       interval: "daily"
 
   - package-ecosystem: "docker"
     directory: "/.devcontainer"
+    target-branch: dev
     schedule:
       interval: "daily"
 
   - package-ecosystem: "gitsubmodule"
     directory: "/"
+    target-branch: dev
     schedule:
       interval: "daily"
 
   - package-ecosystem: "gomod"
     directory: "/themes/blowfish"
+    target-branch: dev
     schedule:
       interval: "daily"
