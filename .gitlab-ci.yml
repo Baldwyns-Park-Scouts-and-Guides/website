@@ -18,7 +18,7 @@ variables:
 # Build and deploy Hugo site to GitLab Pages
 pages:
   stage: build
-  image: golang:1.21-alpine
+  image: golang:1.25-alpine
   rules:
     - if: '$CI_COMMIT_BRANCH'  # Run on all branches
   before_script:
