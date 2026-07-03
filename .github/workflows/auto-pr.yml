@@ -81,8 +81,12 @@ jobs:
             --body "$PR_BODY" \
             --base main \
             --head "$BRANCH_NAME" \
-            --assignee "${{ github.actor }}" \
             --label "auto-pr"
+
+          # Best-effort assignment. Assigning apps/bots (e.g. cursor[bot]) via the default
+          # GITHUB_TOKEN is unsupported and returns an error, so never fail the job on it.
+          gh pr edit "$BRANCH_NAME" --add-assignee "${{ github.actor }}" \
+            || echo "::warning::Skipped assigning @${{ github.actor }} (assigning apps/bots is unsupported with GITHUB_TOKEN)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
