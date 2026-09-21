@@ -69,3 +69,21 @@ pre-commit run markdownlint --all-files
 - **Commits**: use Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, etc.) and explain “why”.
 - **Keep changes small** and commit incrementally when reasonable.
 - **Never commit secrets** (credentials, tokens, `.env` files, etc.).
+
+## Cursor Cloud specific instructions
+
+This is a static site; there is no backend/database. The only service is the Hugo dev server.
+
+- **Theme is a git submodule** (`themes/blowfish`). If pages fail to render or layouts are
+  missing, the submodule is likely uninitialized — the startup update script runs
+  `git submodule update --init --recursive`.
+- **Run the dev server** (binds all interfaces, includes drafts/future posts):
+  `hugo server --bind 0.0.0.0 --port 1313 --buildDrafts --buildFuture`.
+  A harmless `WARN Module "blowfish" is not compatible with this Hugo version` is expected
+  and does not block builds. If a stale `.hugo_build.lock` blocks startup, delete it and retry.
+- **Build check**: `hugo --gc` (production build lands in `public/`).
+- **Quality checks / lint**: `pre-commit run --all-files`. `pre-commit` is installed to
+  `~/.local/bin` (already on `PATH` via `~/.bashrc`). The `oxipng` hook compiles from source
+  and needs Rust ≥ 1.85; the toolchain was updated via `rustup` in the snapshot so it passes.
+- **Committing**: `.githooks/pre-commit` shells out to `pre-commit`, so ensure it is on `PATH`
+  before committing. Do not bypass hooks (`--no-verify` is disallowed).
