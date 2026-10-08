@@ -48,8 +48,15 @@ under its data processing terms, and access is protected with two-step verificat
 This website is hosted on GitHub Pages. GitHub may record technical information such as your IP address for
 security purposes.
 
-- **Analytics:** we use Google Analytics to understand how many people visit the site and which pages are
-  useful. Google Analytics uses cookies. <!-- TODO: update once cookie consent approach is agreed. -->
+- **Analytics:** if you agree, we use Google Analytics to understand how many people visit the site and which
+  pages are useful. Google Analytics sets cookies (named `_ga`) that last up to two years. These cookies are
+  optional: they are only set if you click **Accept analytics** on our cookie banner. If you click **Reject**,
+  no analytics cookies are set. We remember your choice in your browser's local storage. You can change your
+  choice at any time using the button below.
+
+  {{< rawhtml >}}<button type="button" onclick="window.bpsgCookieSettings && window.bpsgCookieSettings()"
+  style="padding:.4rem .9rem;border-radius:.5rem;border:1px solid #888;cursor:pointer;">Change cookie settings</button>{{< /rawhtml >}}
+
 - **Maps:** our About page can show a Google Map. The map only loads, and only shares information with Google,
   if you choose to load it.
 - **Email links:** if you email us, we use your message and address only to reply.
