@@ -27,7 +27,7 @@ We operate CCTV at our premises. You can read a short summary on our [CCTV notic
   and damage to the building. Our lawful basis is legitimate interests.
 - **Where:** cameras cover entrances, the outside of the building and storage areas. Cameras never cover
   toilets, changing areas or sleeping areas. We do not record audio.
-- **How long we keep it:** footage is automatically overwritten after **30 days**, unless it is needed to deal
+- **How long we keep it:** footage is automatically overwritten after **14 days**, unless it is needed to deal
   with an incident, a request or a legal claim.
 - **Who can see it:** only a small number of authorised trustees. We may share footage with the police, our
   insurers or other authorities where the law allows, and we log every disclosure.
