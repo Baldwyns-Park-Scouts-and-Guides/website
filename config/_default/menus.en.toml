@@ -40,3 +40,13 @@ identifier = "github"
 pre = "github"
 url = "https://github.com/Baldwyns-Park-Scouts-and-Guides/website"
 weight = 50
+
+[[footer]]
+name = "Privacy Policy"
+pageRef = "privacy"
+weight = 5
+
+[[footer]]
+name = "CCTV Notice"
+pageRef = "cctv"
+weight = 6
