@@ -72,11 +72,22 @@ You have the right to:
 To make a request, email
 [dataprotection@baldwynsparkscoutsandguides.org](mailto:dataprotection@baldwynsparkscoutsandguides.org). For
 CCTV footage, please tell us the date, approximate time and location, and a description of yourself so we can
-find it. We will respond within one month.
+find it. We will respond within one month. If we need more information to find what you have asked for, we
+will ask you, and the one-month period pauses until you reply.
 
-If you are unhappy with how we have handled your information, you can complain to the
+## Complaints
+
+If you are unhappy with how we have handled your personal information, please tell us. You can complain by
+emailing [dataprotection@baldwynsparkscoutsandguides.org](mailto:dataprotection@baldwynsparkscoutsandguides.org),
+by writing to the Data Protection Lead at our address above, or by speaking to any leader or trustee. We can also
+send you a complaint form. You do not need to use any particular words.
+
+We will acknowledge your complaint within 30 days, look into it without undue delay, keep you updated, and tell
+you the outcome.
+
+If you are still not satisfied, you can complain to the
 [Information Commissioner's Office](https://ico.org.uk/make-a-complaint/).
 
 ## Changes to this policy
 
-We review this policy every year. Last updated: 8 October 2026.
+We review this policy every year. Last updated: 9 October 2026.
