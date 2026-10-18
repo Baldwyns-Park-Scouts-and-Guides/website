@@ -1,0 +1,21 @@
+{{/* Override of Blowfish GA partial: Google Analytics loads only after the visitor consents (PECR). */}}
+<script>
+  (function () {
+    var GA_ID = "{{ site.Config.Services.GoogleAnalytics.ID }}";
+    window.bpsgLoadAnalytics = function () {
+      if (window.bpsgAnalyticsLoaded) return;
+      window.bpsgAnalyticsLoaded = true;
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("js", new Date());
+      gtag("config", GA_ID, { anonymize_ip: true });
+    };
+    try {
+      if (localStorage.getItem("bpsg-cookie-consent") === "granted") window.bpsgLoadAnalytics();
+    } catch (e) {}
+  })();
+</script>
